@@ -13,6 +13,7 @@ public class MyGoalsPage extends BasePage {
     private WebElementFacade addButton;
 
     @FindBy(xpath = "//a[contains(@class, 'red')]")
+    //@FindBy(xpath = "//*[@id=\"goalListDiv\"]/tree-table/div[2]/ul/li[1]/a/div")
     private WebElementFacade addGoalButton;
 
     @FindBy(xpath = "//a[contains(@class, 'blue')]")
@@ -27,7 +28,7 @@ public class MyGoalsPage extends BasePage {
     @FindBy(xpath = "//a[@data-tooltip='Unapproved Goals']")
     private WebElementFacade unapprovedGoalsButton;
 
-    @FindBy(css = ".toast-container")
+    @FindBy(css = ".toast-message")
     private WebElementFacade unapprovedGoalsInfoMessage;
 
     public void clickOnAddGoalButton() {

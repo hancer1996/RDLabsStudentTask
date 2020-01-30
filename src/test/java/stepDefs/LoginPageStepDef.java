@@ -62,4 +62,9 @@ public class LoginPageStepDef extends DefaultStepsData {
             softly.assertThat(isButtonVisible).as(String.format("button %s not visible", socialMediaButtonName)).isTrue();
         }
     }
+    @Then ("default value in Username field is $username")
+    public void checkDefaultValOfUsername(String username){
+
+    }
+
 }

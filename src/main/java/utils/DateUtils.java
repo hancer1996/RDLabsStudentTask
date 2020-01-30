@@ -8,6 +8,7 @@ public class DateUtils {
 
     public final static String DATEPATTERN = "yyyy-MM-dd";
     public final static String DATEPATTERN_US = "MM/dd/yyyy";
+    public final static String DATEPATTERN_EU = "EEEE, dd-MMM-yyyy";
     public final static String DATEPATTERN_UK = "yyyy-dd-MM";
 
     public static String getCurrentDateInFormat(String datePattern) {

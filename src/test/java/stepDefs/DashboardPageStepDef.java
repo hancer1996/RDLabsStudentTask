@@ -1,6 +1,7 @@
 package stepDefs;
 
 import net.thucydides.core.annotations.Steps;
+import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 import steps.CommonSteps;
@@ -31,22 +32,29 @@ public class DashboardPageStepDef extends DefaultStepsData {
         dashboardPageSteps.clickOnHideMenuButton();
     }
 
+    @When("I click on show menu button") //TODO: There's gonna be better way not to use same code=)
+    public void whenClickOnTheShowMenuButton() {
+        whenClickOnTheHideMenuButton();
+    }
+
     @Then("main menu $condition")
     public void mainMenuCondition(String condition) {
         String warningMessage = "Menu not " + condition + " after clicking on the hide/show menu button";
         if (condition.equals("disappear")) {
             softly.assertThat(commonSteps.isMenuAvatarVisibleNow()).as(warningMessage).isFalse();
         }
+        else if (condition.equals("appear")) {
+            softly.assertThat(commonSteps.isMenuAvatarVisibleNow()).as(warningMessage).isTrue();
+        }
     }
 
     @When("I click on the three dots button inside $sectionName section")
-    public void clickiOnThreeDotsButton(String sectionName) {
+    public void clickOnThreeDotsButton(String sectionName) {
         dashboardPageSteps.expandContainerClickingOnThreeDots(sectionName);
     }
 
     @Then("Legend component appears in $sectionName section")
     public void checkThatLegendAppears(String sectionName) {
-        softly.assertThat(dashboardPageSteps.checkThatLegendAppearsIn(sectionName)).as("Legend component not appers").isTrue();
+        softly.assertThat(dashboardPageSteps.checkThatLegendAppearsIn(sectionName)).as("Legend component not appears").isTrue();
     }
-
 }

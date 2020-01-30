@@ -20,16 +20,18 @@ public class LoginPage extends BasePage {
     @FindBy(css = "#btnLogin")
     private WebElementFacade loginButton;
 
-    @FindBy(css = "#loginAsButtonGroup button")
+    @FindBy( css = "#loginAsButtonGroup > button")
     private WebElementFacade loginAsDifferentRoleButton;
 
     @FindBy(css = "#spanMessage")
     private WebElementFacade emptyFieldErrorMessage;
 
-    @FindBy(xpath = "//li[@class='dropdown-menu']//li//a")
+    //@FindBy(xpath = "//li[@class='dropdown-menu']//li//a")
+    @FindBy(xpath = "//*[@id=\"loginAsButtonGroup\"]/ul")
     private List<WebElementFacade> userRoles;
 
-    @FindBy(css = ".outer .hidden-md")
+   // @FindBy(css = ".outer .hidden-md")
+    @FindBy(css = "  .col-md-12.hidden-sm.pull-left.social-buttons.outer")
     private WebElementFacade socialMediaContainer;
 
     public void enterUserName(String userName) {

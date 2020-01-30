@@ -3,6 +3,7 @@ package steps;
 import emuns.ItemsContainer;
 import lombok.extern.slf4j.Slf4j;
 import net.thucydides.core.annotations.Step;
+import org.openqa.selenium.By;
 
 @Slf4j
 public class DashboardPageSteps extends DefaultStepsData {
@@ -30,7 +31,8 @@ public class DashboardPageSteps extends DefaultStepsData {
                 dashboardPage.getThreeDotsButton().waitUntilEnabled().click();
                 break;
             case LEAVE_TAKEN:
-                dashboardPage.getThreeDotsButton().waitUntilEnabled().click();
+              //  dashboardPage.getThreeDotsButton().waitUntilEnabled().click();
+               dashboardPage.find(By.cssSelector("#panel_resizable_0_5 > div.card-content > span > i")).click();//TODO:Reformat code to make things like they supposed to be
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + itemsContainer);
