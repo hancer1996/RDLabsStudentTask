@@ -28,7 +28,7 @@ Then Check that 'News' section is present on Dashboard page with header News
 And Check that news counter under 'News' section is same as real amount of news in list
 !-- TODO implement this scenario
 Scenario: AC-4 Check that documents counter and actual amount of documents are same
-Meta:@debug
+Meta:
 Then Check that 'Documents' section is present on Dashboard page with header Documents
-And Check that news counter under 'Documents' section is same as real amount of news in list
+And Check that news counter under 'documentList' section is same as real amount of news in list
 

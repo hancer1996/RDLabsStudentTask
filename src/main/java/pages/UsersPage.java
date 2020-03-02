@@ -6,6 +6,7 @@ import net.serenitybdd.core.annotations.findby.FindBy;
 import net.serenitybdd.core.pages.WebElementFacade;
 
 import java.time.Duration;
+import java.util.List;
 
 @Getter
 @Slf4j
@@ -13,6 +14,12 @@ public class UsersPage extends BasePage {
 
     @FindBy(xpath = "//a[@data-tooltip='Filter']")
     private WebElementFacade filterButton;
+
+    @FindBy(xpath = "//a[@ng-click='list.nextPage()']")
+    private WebElementFacade nextPageButton;
+
+    @FindBy(xpath = "//form[@id='frmSystemUserSearch']//div/input")
+    private WebElementFacade filters;
 
     public void clickOnFilterButton() {
         log.info("Clicking on the [Filter button]");

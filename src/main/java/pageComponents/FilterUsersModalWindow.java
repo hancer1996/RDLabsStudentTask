@@ -49,5 +49,24 @@ public class FilterUsersModalWindow {
         log.info("Clicking on the [Reset button]");
         this.resetButton.waitUntilEnabled().waitUntilClickable().click();
     }
-
+    public void changeStatusTo(String status) {
+        log.info("Change Status to " + status);
+        switch (status) {
+            case "All":
+                this.status.waitUntilClickable().click();
+                this.status.find(By.xpath("./..//ul//span[text()='All']")).waitUntilEnabled().waitUntilClickable().click();
+                break;
+            case "Disabled":
+                this.status.waitUntilClickable().click();
+                this.status.find(By.xpath("./..//ul//span[text()='Disabled']")).waitUntilEnabled().waitUntilClickable().click();
+                break;
+            case "Enabled":
+                this.status.waitUntilClickable().click();
+                this.status.find(By.xpath("./..//ul//span[text()='Enabled']")).waitUntilEnabled().waitUntilClickable().click();
+                break;
+            default:
+                log.info("Wrong status name! Status wasn't changed");
+                break;
+        }
+    }
 }

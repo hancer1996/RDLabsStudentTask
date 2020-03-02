@@ -38,6 +38,16 @@ public class DashboardPage extends BasePage {
     @FindBy(xpath = "//div[@id='dashboard__viewDocumentsOnDashboard']/../div[@class='dashboardCard-title-for-card']")
     private WebElementFacade documentsHeader;
 
+    @FindBy(xpath = "//*[@id='documentsOnDashboard']")
+    private WebElementFacade documentsList;
+
+    @FindBy(xpath = "//*[@id='newsOnDashboard']")
+    private WebElementFacade newsList;
+
+    @FindBy (xpath = "//div[@id='dashboard__viewDocumentsOnDashboard']//div[@class='document-count-text']/div[@class='right']")
+    private WebElementFacade documentCount;
+
+
     public void clickOnHideMenuButton() {
         log.info("Clicking on the [Hide menu] button");
         hideMenuButton.waitUntilVisible().waitUntilClickable().click();

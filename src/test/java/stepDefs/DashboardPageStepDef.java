@@ -1,5 +1,6 @@
 package stepDefs;
 
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Steps;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
@@ -60,13 +61,12 @@ public class DashboardPageStepDef extends DefaultStepsData {
 
     @Then ("Check that '$sectionName' section is present on Dashboard page with header $text")
     public void checkHeaderSection(String sectionName, String headerInnerText) {
-        softly.assertThat(dashboardPageSteps.ExecuteTextFromSectionHeader(sectionName))
+        softly.assertThat(dashboardPageSteps.executeTextFromSectionHeader(sectionName))
                 .as("Wrong header").isEqualTo(headerInnerText);
     }
-//TODO: Implement method for step
+//TODO: No parameter converter for interface=(
     @Then("Check that news counter under '$sectionName' section is same as real amount of news in list")
-    public void getActualAmount(String sectionName){
-
-
+    public void ActualAmount(WebElementFacade sectionName){
+softly.assertThat(dashboardPageSteps.actualNumber(sectionName)).isEqualTo(dashboardPageSteps.expectedNumber());
     }
 }

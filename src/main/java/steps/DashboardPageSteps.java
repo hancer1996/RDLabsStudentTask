@@ -2,8 +2,12 @@ package steps;
 
 import emuns.ItemsContainer;
 import lombok.extern.slf4j.Slf4j;
+import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.Step;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 @Slf4j
 public class DashboardPageSteps extends DefaultStepsData {
@@ -31,8 +35,8 @@ public class DashboardPageSteps extends DefaultStepsData {
                 dashboardPage.getThreeDotsButton().waitUntilEnabled().click();
                 break;
             case LEAVE_TAKEN:
-              //  dashboardPage.getThreeDotsButton().waitUntilEnabled().click();
-               dashboardPage.find(By.cssSelector("#panel_resizable_0_5 > div.card-content > span > i")).click();//TODO:Reformat code to make things like they supposed to be
+                //  dashboardPage.getThreeDotsButton().waitUntilEnabled().click();
+                dashboardPage.find(By.cssSelector("#panel_resizable_0_5 > div.card-content > span > i")).click();//TODO:Reformat code to make things like they supposed to be
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + itemsContainer);
@@ -52,7 +56,7 @@ public class DashboardPageSteps extends DefaultStepsData {
     }
 
     @Step
-    public String ExecuteTextFromSectionHeader(String sectionName) {
+    public String executeTextFromSectionHeader(String sectionName) {
         ItemsContainer itemsContainer = ItemsContainer.getItemsContainerName(sectionName);
         switch (itemsContainer) {
             case NEWS:
@@ -63,4 +67,18 @@ public class DashboardPageSteps extends DefaultStepsData {
                 throw new IllegalStateException("Unexpected value: " + itemsContainer);
         }
     }
+
+    @Step
+    public Integer actualNumber(WebElementFacade sectionName){
+        List<WebElement> list = sectionName.findElements(By.xpath("//li"));
+        return list.size();
+    }
+
+    @Step
+    public Integer expectedNumber(){
+      String expectedNumber =  dashboardPage.getDocumentCount().getTextValue();
+        expectedNumber = expectedNumber.substring(expectedNumber.lastIndexOf('/') + 1 );
+        return Integer.parseInt(expectedNumber);
+    }
 }
+

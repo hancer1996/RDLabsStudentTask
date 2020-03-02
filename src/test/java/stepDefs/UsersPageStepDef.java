@@ -42,4 +42,28 @@ public class UsersPageStepDef extends DefaultStepsData {
     public void clickOnTheSearchButtonInFilterUsersWindow() {
         usersSteps.clickOnTheSearchButton();
     }
+
+    @When("Filter user by Status with option $status")
+    public void filterUsersByStatus(String status) {
+        usersSteps.changeStatusTo(status);
+    }
+
+    @Then ("Check that employee with name '$employee'  $status in the search result")
+    public void checkIfEmployeeIsPresent(String employee, String status) {
+        if (status.contains("NOT")) {
+            softly.assertThat(usersSteps.employeeIsShown(employee))
+                    .as("[employee] is not shown").isFalse();
+        } else {
+            softly.assertThat(usersSteps.employeeIsShown(employee))
+                    .as("[employee] is shown").isTrue();
+        }
+    }
+
+    @Then("Filter user by '$filterName' with option '$status'")
+    @When("Filter user by '$filterName' with option '$status'")
+    public void checkFilterByStatus(String filter, String status){
+
+
+    }
 }
+
