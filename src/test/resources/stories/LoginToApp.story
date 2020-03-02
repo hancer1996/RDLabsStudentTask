@@ -22,6 +22,7 @@ When I login to application with username 'admin' and password ''
 Then error message appears with text: Password cannot be empty
 
 Scenario: AC-4 Check that all roles available on login page
+!--TODO: actual is one record with \n splitter, split them later
 Meta: @regression
 When I click on Login as a Different Role button
 Then following roles are shown in the drop down:
@@ -41,13 +42,14 @@ Then I check that following social-media buttons are visible:
 | youtube             |
 | linkedin            |
 
-!-- TODO implement this scenario
-Scenario: AC-6 Check that text "admin" is shown by default on login page in user name field
-Then default value in Username field is 'admin'
+Scenario: AC-6 Check that text "admin" is shown by default on login page in user name field:
+Meta: @regression
+Then default value in Username field is admin
 
-!-- TODO implement this scenario
 Scenario: AC-7 Check that pop up messege with text 'Invalid Credentials' is shown after login with invalid credentials
-
+Meta: @regression
+When I login to application with username 'admin_invalid' and password 'admin_invalid'
+Then check that pop up with text 'Invalid Credentials' appears
 
 
 

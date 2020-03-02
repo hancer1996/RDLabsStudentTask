@@ -32,6 +32,12 @@ public class DashboardPage extends BasePage {
     @FindBy(css = "#legend")
     private WebElementFacade leavesLegend;
 
+    @FindBy(xpath = "//div[@id='dashboard__viewNewsOnDashboard']/../div[@class='dashboardCard-title-for-card']")
+    private WebElementFacade newsHeader;
+
+    @FindBy(xpath = "//div[@id='dashboard__viewDocumentsOnDashboard']/../div[@class='dashboardCard-title-for-card']")
+    private WebElementFacade documentsHeader;
+
     public void clickOnHideMenuButton() {
         log.info("Clicking on the [Hide menu] button");
         hideMenuButton.waitUntilVisible().waitUntilClickable().click();

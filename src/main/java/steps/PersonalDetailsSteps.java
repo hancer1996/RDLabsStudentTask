@@ -25,4 +25,32 @@ public class PersonalDetailsSteps extends DefaultStepsData {
                 .stream().map(we -> we.getAttribute("innerText")).collect(Collectors.toList());
         return nationalityOptions;
     }
+
+    @Step
+    public void GenderButtonActiveState(String gender) {
+        personalDetailsPage.clickOnButton(gender);
+    }
+
+    @Step
+    public void GenderButtonUnchecked(String gender) {
+        switch (gender) {
+            case "Male":
+                softly.assertThat(personalDetailsPage.getMaleRadioButton().isSelected()).isFalse();
+                break;
+            case "Female":
+                softly.assertThat(personalDetailsPage.getFemaleRadioButton().isDisabled()).isFalse();
+                break;
+        }
+    }
+
+    @Step
+    public boolean checkSelectedRadioButton(String gender) {
+        return personalDetailsPage.checkSelectedRadioButton(gender);
+    }
+
+    @Step
+    public String getErrorMessageText(String labelName) {
+        if (labelName.equals("Date of Birth")) return personalDetailsPage.getBDayErrorMessage().getText();
+        else return personalDetailsPage.getRaceAndEthnicityErrorMessage().getText();
+    }
 }

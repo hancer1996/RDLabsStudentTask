@@ -34,6 +34,9 @@ public class LoginPage extends BasePage {
     @FindBy(css = "  .col-md-12.hidden-sm.pull-left.social-buttons.outer")
     private WebElementFacade socialMediaContainer;
 
+    @FindBy(css = ".toast-message")
+    private WebElementFacade toasterMessage;
+
     public void enterUserName(String userName) {
         log.info("Login to app with userName " + userName);
         loginInputField.waitUntilVisible().waitUntilClickable().clear();

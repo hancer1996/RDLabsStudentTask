@@ -57,4 +57,16 @@ public class DashboardPageStepDef extends DefaultStepsData {
     public void checkThatLegendAppears(String sectionName) {
         softly.assertThat(dashboardPageSteps.checkThatLegendAppearsIn(sectionName)).as("Legend component not appears").isTrue();
     }
+
+    @Then ("Check that '$sectionName' section is present on Dashboard page with header $text")
+    public void checkHeaderSection(String sectionName, String headerInnerText) {
+        softly.assertThat(dashboardPageSteps.ExecuteTextFromSectionHeader(sectionName))
+                .as("Wrong header").isEqualTo(headerInnerText);
+    }
+//TODO: Implement method for step
+    @Then("Check that news counter under '$sectionName' section is same as real amount of news in list")
+    public void getActualAmount(String sectionName){
+
+
+    }
 }

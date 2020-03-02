@@ -50,4 +50,17 @@ public class DashboardPageSteps extends DefaultStepsData {
                 throw new IllegalStateException("Unexpected value: " + itemsContainer);
         }
     }
+
+    @Step
+    public String ExecuteTextFromSectionHeader(String sectionName) {
+        ItemsContainer itemsContainer = ItemsContainer.getItemsContainerName(sectionName);
+        switch (itemsContainer) {
+            case NEWS:
+                return dashboardPage.getNewsHeader().waitUntilVisible().getText();
+            case DOCUMENTS:
+                return dashboardPage.getDocumentsHeader().waitUntilVisible().getText();
+            default:
+                throw new IllegalStateException("Unexpected value: " + itemsContainer);
+        }
+    }
 }

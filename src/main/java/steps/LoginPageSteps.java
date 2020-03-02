@@ -32,6 +32,6 @@ public class LoginPageSteps extends DefaultStepsData {
 
     @Step
     public List<String> getAllUsersRolesFromDropDown() {
-        return loginPage.getUserRoles().stream().map(WebElementFacade::getText).collect(Collectors.toList());
+       return loginPage.getUserRoles().stream().map(WebElementFacade::getText).collect(Collectors.toList());
     }
 }
